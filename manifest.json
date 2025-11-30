@@ -1,0 +1,20 @@
+{
+  "name": "用藥提醒小幫手",
+  "short_name": "用藥提醒",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#00d1b2",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/822/822163.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/822/822163.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

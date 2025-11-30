@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用藥提醒小幫手</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <span class="icon is-medium mr-2">
+                    <i class="fa-solid fa-pills fa-lg"></i>
+                </span>
+                <span class="is-size-4 has-text-weight-bold">用藥提醒</span>
+            </a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half-tablet is-one-third-desktop">
+
+                    <!-- Add Medication Card -->
+                    <div class="card mb-5 add-med-card">
+                        <div class="card-content">
+                            <p class="title is-4 has-text-centered mb-4">
+                                <i class="fa-solid fa-plus-circle mr-2 has-text-primary"></i>新增提醒
+                            </p>
+                            <form id="medForm">
+                                <div class="field">
+                                    <label class="label">藥品名稱</label>
+                                    <div class="control has-icons-left">
+                                        <input class="input is-rounded" type="text" id="medName" placeholder="例如：維他命 C"
+                                            required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fa-solid fa-capsules"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label">提醒時間</label>
+                                    <div class="control has-icons-left">
+                                        <input class="input is-rounded" type="time" id="medTime" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fa-solid fa-clock"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label">備註 (選填)</label>
+                                    <div class="control has-icons-left">
+                                        <input class="input is-rounded" type="text" id="medNote" placeholder="例如：飯後服用">
+                                        <span class="icon is-small is-left">
+                                            <i class="fa-solid fa-note-sticky"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="field mt-5">
+                                    <div class="control">
+                                        <button
+                                            class="button is-primary is-fullwidth is-rounded has-text-weight-bold shadow-button">
+                                            加入清單
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Medication List -->
+                    <div id="medListContainer">
+                        <h3 class="title is-5 pl-2 border-left-primary mb-4">我的用藥清單</h3>
+                        <div id="medList" class="med-list">
+                            <!-- Items will be injected here by JS -->
+                            <div class="notification is-light has-text-centered">
+                                目前沒有提醒事項
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer mt-auto">
+        <div class="content has-text-centered is-size-7">
+            <p>
+                <strong>用藥提醒小幫手</strong> by Antigravity.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Notification Sound (Hidden) -->
+    <audio id="notificationSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"
+        loop></audio>
+
+    <!-- Alarm Modal -->
+    <div id="alarmModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box has-text-centered">
+                <span class="icon is-large has-text-warning mb-3">
+                    <i class="fa-solid fa-bell fa-3x fa-shake"></i>
+                </span>
+                <h3 class="title is-4">該吃藥囉！</h3>
+                <p id="alarmMessage" class="subtitle is-6 mb-5"></p>
+                <button id="stopAlarmBtn" class="button is-danger is-large is-rounded is-fullwidth">
+                    <i class="fa-solid fa-stop mr-2"></i> 關閉提醒
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
